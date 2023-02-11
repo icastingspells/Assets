@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 7114884108955997759, guid: 2bead85c30e11d249b9466c545b686af,
     type: 3}
+  damt: 
   _health: 10
 --- !u!1 &3355304613004164670
 GameObject:
@@ -295,5 +296,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackCollider: {fileID: 4571769365040704525}
-  damage: 1
+  damage: 3
   knockbackForce: 10

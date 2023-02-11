@@ -9,20 +9,24 @@ public class DamagableCharacter : MonoBehaviour, IDamagable
     Animator animator;
     Rigidbody2D rb;
     public GameObject healthText;
-   
+
+
 
     private void Start() {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+       
+        
     }
 
     public float Health{
         set {
             if(value < _health)
             {animator.SetTrigger("Hit");
+            
             RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
-            textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position); 
-
+            textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);  
+            
             Canvas canvas = GameObject.FindObjectOfType<Canvas>();
             textTransform.SetParent(canvas.transform);
             }
@@ -43,12 +47,16 @@ public class DamagableCharacter : MonoBehaviour, IDamagable
     
     public void OnHit(float damage, Vector2 knockback){
         Health -= damage;
-        rb.AddForce(knockback);  
+        rb.AddForce(knockback);    
+        HealthText.Update(damage);
     }
     public void OnHit(float damage){
-        
+         
     }
     public void OnObjectDestroyed(){
     Destroy(gameObject);
     }
+    
+        
+   
 }

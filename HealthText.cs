@@ -13,17 +13,21 @@ public class HealthText : MonoBehaviour
     public TextMeshProUGUI textMesh;
     Color startingColor;
     public RectTransform rTransform;
+    
+   
 
     
-    void start(){
+    public void start(){
+        textMesh = GetComponent<TextMeshProUGUI>();
        startingColor = textMesh.color;
        textMesh.color = new Color(1,0,0);
-    rTransform = GetComponent<RectTransform>();
+       rTransform = GetComponent<RectTransform>();
     }
-    // Update is called once per frame
-    public void Update()
-    {
-       
+
+
+    public void Update(float damagetext)
+    {   
+        textMesh.text = damagetext;
         timeElapsed += Time.deltaTime;
         textMesh.color = new Color(1, startingColor.g, startingColor.b, 1 - (timeElapsed / timeToLive));
          rTransform.position += floatDirection * floatSpeed * Time.deltaTime;

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -6435730179471078963}
   - component: {fileID: 8426633866318054263}
   - component: {fileID: 4602056250944665883}
-  - component: {fileID: 6330554539495167854}
-  m_Layer: 0
+  - component: {fileID: 4363440450083282363}
+  m_Layer: 6
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 100
+  m_LinearDrag: 50
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -162,8 +162,8 @@ MonoBehaviour:
   damage: 1
   knockbackForce: 500
   detectionZone: {fileID: 2803747167452139018}
-  realSpeed: 500
---- !u!114 &6330554539495167854
+  realSpeed: 10000000
+--- !u!114 &4363440450083282363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,12 +172,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 442126418880012020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 389104af4f130054593fc9f77f7dbf5b, type: 3}
+  m_Script: {fileID: 11500000, guid: c3e15aabb0ffb084eb9494764c483661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 7114884108955997759, guid: 2bead85c30e11d249b9466c545b686af,
     type: 3}
-  _health: 3
+  _health: 9
 --- !u!1 &8321520957529873648
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 2320181319028468787}
   - component: {fileID: 6028002592898640687}
   - component: {fileID: 2803747167452139018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DetectionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

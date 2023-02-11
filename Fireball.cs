@@ -5,9 +5,10 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     public Collider2D AttackCollider;
-    public float damage = 1;
+    public float damage = 3;
     public float knockbackForce = 1;
     Vector2 rightAttackOffset;
+    
     
     private void Start(){
         rightAttackOffset = transform.localPosition;
@@ -29,6 +30,7 @@ public class Fireball : MonoBehaviour
     {   
         IDamagable damagableObject = (IDamagable) collider.GetComponent<IDamagable>();
         if(damagableObject != null){
+          
 
         Vector3 parentPosition = transform.parent.position;
         Vector2 direction = (Vector2) (collider.gameObject.transform.position - parentPosition).normalized;

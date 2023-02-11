@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour
 {
+    public string tagTarget = "Player";
     public float damage = 1;
     public float knockbackForce = 1000;
     public DetectionZone detectionZone;
@@ -31,12 +32,14 @@ public class Slime : MonoBehaviour
         set{
                 realSpeed = 0;
             }
-            get{
+        get{
                 return realSpeed;
             }
     }
 
     void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.tag == tagTarget){
+        
         Collider2D collider = col.collider;
        IDamagable damagable = collider.GetComponent<IDamagable>();
        if(damagable != null) {
@@ -45,6 +48,7 @@ public class Slime : MonoBehaviour
         Vector2 direction = (Vector2) (collider.transform.position - transform.position).normalized;
         Vector2 knockback = direction * knockbackForce;
         damagable.OnHit(damage, knockback);
+        }
         }
     }
 }

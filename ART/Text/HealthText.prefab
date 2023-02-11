@@ -69,7 +69,6 @@ MonoBehaviour:
       m_Calls: []
   m_text: '1
 
-
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a2a4b67f70a4d5e41bb6c75e67c2b65d, type: 2}
@@ -80,7 +79,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282993151
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

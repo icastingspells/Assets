@@ -70,3 +70,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+ART/Dungeon/32.prefab
+ART/Dungeon/32.prefab.meta
+ART/Dungeon/32x32.prefab
+ART/Dungeon/New Palette 1.prefab
+ART/Dungeon/New Palette 1.prefab.meta
+README.md.meta
