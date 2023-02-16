@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class SwordHit : MonoBehaviour
 {
     public Collider2D AttackCollider;
     public float damage = 3;
@@ -12,6 +12,7 @@ public class Fireball : MonoBehaviour
     
     private void Start(){
         rightAttackOffset = transform.localPosition;
+        AttackCollider.enabled = false;
     }
 
     public void AttackRight() {

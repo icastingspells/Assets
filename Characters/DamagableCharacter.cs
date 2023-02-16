@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 
 public class DamagableCharacter : MonoBehaviour, IDamagable
 {
     Animator animator;
     Rigidbody2D rb;
-    public GameObject healthText;
-
-
+    public Collider2D collider;
+    public Healthbar healthBar;
 
     private void Start() {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-       
-        
+        healthBar.SetMaxHealth(_health);
+        collider.enabled = true;
     }
 
     public float Health{
@@ -24,18 +23,13 @@ public class DamagableCharacter : MonoBehaviour, IDamagable
             if(value < _health)
             {animator.SetTrigger("Hit");
             
-            RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
-            textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);  
-            
-            Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-            textTransform.SetParent(canvas.transform);
             }
              _health = value;
             
             
             if(_health <= 0) {
+                collider.enabled = false;
                 animator.SetTrigger("Defeated");
-                
             }
         }
         
@@ -47,8 +41,9 @@ public class DamagableCharacter : MonoBehaviour, IDamagable
     
     public void OnHit(float damage, Vector2 knockback){
         Health -= damage;
-        rb.AddForce(knockback);    
-        HealthText.Update(damage);
+        rb.AddForce(knockback);   
+        healthBar.SetHealth(Health); 
+        
     }
     public void OnHit(float damage){
          

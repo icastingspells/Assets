@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float sprint = 300f;
     public float idleFriction = 0.09f;
     public float maxSpeed = 8f;
-    public Fireball fireball;
+    public SwordHit swordHit;
     public IEnumerator Stopdash(){
         yield return new WaitForSeconds(0.2f);
         CharacterCollider.enabled = true;
@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
       realSpeed = sprint; 
       if ( realSpeed == sprint ){
       StartCoroutine(Stopdash());
-      CharacterCollider.enabled = false;
       }
     }
     
@@ -57,14 +56,33 @@ public class PlayerController : MonoBehaviour
           rb.velocity = Vector2.ClampMagnitude(rb.velocity +(moveInput * realSpeed *Time.deltaTime), maxSpeed); 
             if(moveInput.x < 0){
               spriteRenderer.flipX = true;
+              IsMoving = true;
+              animator.SetBool("MoveDown", false);
+              animator.SetBool("MoveUp", false);
             } 
             else if (moveInput.x > 0) {
             spriteRenderer.flipX = false;
-            }
             IsMoving = true;
+            animator.SetBool("MoveDown", false);
+            animator.SetBool("MoveUp", false);
+            }
+            if(moveInput.y < 0){
+             animator.SetBool("MoveDown", true);
+              animator.SetBool("MoveUp", false);
+              IsMoving = false;
+            } 
+            else if (moveInput.y > 0) {
+              animator.SetBool("MoveDown", false);
+            animator.SetBool("MoveUp", true);
+            IsMoving = false;
+
+            }
+           
         } else {
           rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, idleFriction);
           IsMoving = false;
+          animator.SetBool("MoveDown", false);
+          animator.SetBool("MoveUp", false);
         }
     }
     
@@ -76,17 +94,17 @@ public class PlayerController : MonoBehaviour
     }
     
 
-    public void Fireball(){
+    public void SwordHit(){
       if(spriteRenderer.flipX == true){
-        fireball.AttackLeft();
+        swordHit.AttackLeft();
       }else{
-        fireball.AttackRight();
+        swordHit.AttackRight();
       } 
     }
     
-    public void Fireballstop(){
+    public void SwordHitStop(){
       
-      fireball.AttackStop();
+      swordHit.AttackStop();
     }
     
 
