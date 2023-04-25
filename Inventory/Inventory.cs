@@ -17,7 +17,7 @@ public Camera cam;
 public EventSystem evesys;
 public int currentID;
 public ItemInventory currentItem;
-public RectTransform movingObject;
+public Transform movingObject;
 public Vector3 offset;
 public GameObject backGround;
 
@@ -25,10 +25,6 @@ public GameObject backGround;
 public void Start(){
     if (items.Count == 0){
         AddGraphics();
-    }
-    for (int i = 0; i < maxCount; i++)
-    {
-        AddItem(i, database.items[Random.Range(0, database.items.Count)], Random.Range(1,64));
     }
     UpdateInventory();
 } 
@@ -111,7 +107,7 @@ public void AddInventoryItem(int id, ItemInventory invItem)
 
         ItemInventory ii = new ItemInventory();
         ii.itemGameObj = newItem;
-        RectTransform rt = newItem.GetComponent<RectTransform>();
+        Transform rt = newItem.GetComponent<Transform>();
         rt.localPosition = new Vector3(0,0,0);
         rt.localScale = new Vector3(1,1,1);
         newItem.GetComponentInChildren<RectTransform>().localScale = new Vector3(1,1,1);
@@ -133,7 +129,7 @@ public void UpdateInventory(){
             items[1].itemGameObj.GetComponentInChildren<Text>().text = "";
         }
 
-        items[i].itemGameObj.GetComponent<Image>().sprite = database.items[items[i].id].img;
+        items[i].itemGameObj.GetComponent<SpriteRenderer>().sprite = database.items[items[i].id].img;
     }
 
 }

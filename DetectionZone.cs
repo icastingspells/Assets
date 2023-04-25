@@ -7,6 +7,7 @@ public class DetectionZone : MonoBehaviour
     public string tagTarget = "Player";
     public List<Collider2D> detectedObj = new List<Collider2D>();
     public Collider2D col;
+
     void Start()
     {
         col.GetComponent<Collider2D>();
